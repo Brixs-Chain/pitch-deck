@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://pitch.brixs.space/sitemap.xml
