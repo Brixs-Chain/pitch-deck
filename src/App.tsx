@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { ArrowRight, Globe, Zap, Users, Map, Mail, Link } from 'lucide-react';
+import { ArrowRight, Globe, Zap, Users, Map, Mail, Link as LinkIcon } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 export default function App() {
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -34,6 +35,7 @@ export default function App() {
             h2 { font-size: 32px !important; margin-top: 10px !important; }
             p { font-size: 15px !important; }
           }
+          .resources-dropdown:hover .dropdown-menu { display: flex !important; }
         `}
       </style>
       
@@ -43,9 +45,17 @@ export default function App() {
         <div className="brx-brand" style={{ display: 'flex', alignItems: 'center' }}>
           <img src="/full_logo.png" alt="Brixs Logo" style={{ height: '40px', width: 'auto' }} />
         </div>
-        <div className="brx-links" style={{ flex: 1, justifyContent: 'center', gap: '30px', display: 'flex' }}>
+        <div className="brx-links" style={{ flex: 1, justifyContent: 'center', gap: '30px', display: 'flex', alignItems: 'center' }}>
           <a href="https://www.brixs.space" target="_blank" rel="noreferrer" style={{ fontSize: '12px', fontWeight: 700, color: '#8c93a2', textDecoration: 'none', textTransform: 'uppercase', letterSpacing: '0.05em', transition: 'color 0.2s' }} onMouseOver={(e) => e.currentTarget.style.color = '#fff'} onMouseOut={(e) => e.currentTarget.style.color = '#8c93a2'}>Website</a>
-          <a href="https://docs.brixs.space" target="_blank" rel="noreferrer" style={{ fontSize: '12px', fontWeight: 700, color: '#8c93a2', textDecoration: 'none', textTransform: 'uppercase', letterSpacing: '0.05em', transition: 'color 0.2s' }} onMouseOver={(e) => e.currentTarget.style.color = '#fff'} onMouseOut={(e) => e.currentTarget.style.color = '#8c93a2'}>Docs</a>
+          
+          <div style={{ position: 'relative', display: 'inline-block', paddingBottom: '10px' }} className="resources-dropdown">
+            <span style={{ fontSize: '12px', fontWeight: 700, color: '#8c93a2', textDecoration: 'none', textTransform: 'uppercase', letterSpacing: '0.05em', cursor: 'pointer', transition: 'color 0.2s' }} onMouseOver={(e: any) => e.currentTarget.style.color = '#fff'} onMouseOut={(e: any) => e.currentTarget.style.color = '#8c93a2'}>Resources ▼</span>
+            <div className="dropdown-menu" style={{ position: 'absolute', top: '100%', left: '50%', transform: 'translateX(-50%)', background: '#12141a', border: '1px solid #1f2229', padding: '15px', display: 'none', flexDirection: 'column', gap: '15px', borderRadius: '8px', zIndex: 100, minWidth: '120px', alignItems: 'center' }}>
+              <Link to="/blog" style={{ fontSize: '12px', fontWeight: 700, color: '#8c93a2', textDecoration: 'none', textTransform: 'uppercase', letterSpacing: '0.05em', transition: 'color 0.2s', whiteSpace: 'nowrap' }} onMouseOver={(e: any) => e.currentTarget.style.color = '#fff'} onMouseOut={(e: any) => e.currentTarget.style.color = '#8c93a2'}>Blog</Link>
+              <a href="https://docs.brixs.space" target="_blank" rel="noreferrer" style={{ fontSize: '12px', fontWeight: 700, color: '#8c93a2', textDecoration: 'none', textTransform: 'uppercase', letterSpacing: '0.05em', transition: 'color 0.2s' }} onMouseOver={(e) => e.currentTarget.style.color = '#fff'} onMouseOut={(e) => e.currentTarget.style.color = '#8c93a2'}>Docs</a>
+            </div>
+          </div>
+
           <a href="https://testnet.brixs.space" target="_blank" rel="noreferrer" style={{ fontSize: '12px', fontWeight: 700, color: '#8c93a2', textDecoration: 'none', textTransform: 'uppercase', letterSpacing: '0.05em', transition: 'color 0.2s' }} onMouseOver={(e) => e.currentTarget.style.color = '#fff'} onMouseOut={(e) => e.currentTarget.style.color = '#8c93a2'}>Explorer</a>
           <a href="https://faucet.brixs.space" target="_blank" rel="noreferrer" style={{ fontSize: '12px', fontWeight: 700, color: '#8c93a2', textDecoration: 'none', textTransform: 'uppercase', letterSpacing: '0.05em', transition: 'color 0.2s' }} onMouseOver={(e) => e.currentTarget.style.color = '#fff'} onMouseOut={(e) => e.currentTarget.style.color = '#8c93a2'}>Faucet</a>
         </div>
@@ -381,7 +391,7 @@ export default function App() {
             
             <div style={{ display: 'flex', justifyContent: 'center', gap: '30px', margin: '50px 0' }}>
               <div style={{ display: 'flex', alignItems: 'center', gap: '10px', fontSize: '20px', color: '#fff' }}>
-                <Link size={24} color="var(--accent)" /> www.brixs.space
+                <LinkIcon size={24} color="var(--accent)" /> www.brixs.space
               </div>
               <div style={{ display: 'flex', alignItems: 'center', gap: '10px', fontSize: '20px', color: '#fff' }}>
                 <Map size={24} color="var(--accent)" /> docs.brixs.space
